@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<h3 style='text-align:left;color:Green'>Static text from home.html</h3>
+<h3 th:text="'Name: ' +${user.getName()}"></h3>
+<h3 th:text="'Email: ' +${email}"></h3>
+<h3 th:text="'Password: ' +${password}"></h3>
+
+</body>
+</html>

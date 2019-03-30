@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>About</title>
+</head>
+<body>
+<h3 style='text-align:left;color:Green'>Static text from about.html</h3>
+<p>Hello, <span th:text="${about}"></span></p>
+
+<div th:each="name : ${names}">
+    <p th:text="${name}"></p>
+</div>
+
+</body>
+</html>
