@@ -8,15 +8,15 @@
 </head>
 
 <body>
-<!--    <form th:action="@{/user}" th:method="POST">-->
+
+<h2 th:text="${'Users: ' + count}"></h2>
+
+<form th:action="@{/user}" method="POST">
     <fieldset>
         <legend>New User</legend>
-        <label for="name">Name:</label>
-        <input type="text" name="name" title="Name" id="name"/>
-        <label for="email">Email:</label>
-        <input type="text" name="email" title="Email" id="email"/>
-        <label for="password">Password:</label>
-        <input type="text" name="password" title="Password" id="password"/>
+        Name: <input type="text" name="name" id="name"/>
+        Email: <input type="text" name="email" id="email"/>
+        Password: <input type="text" name="password" id="password"/>
         <input type="submit"/>
     </fieldset>
 </form>

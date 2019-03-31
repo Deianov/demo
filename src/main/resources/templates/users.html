@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+<h2>Users:</h2>
+
+<div th:each="user : ${users}">
+    <h3 th:text="${user.getName() + ', ' + user.getEmail() + ', ' + user.getPassword()}"></h3>
+</div>
+
+</body>
+</html>

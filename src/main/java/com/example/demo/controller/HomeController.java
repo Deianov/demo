@@ -14,25 +14,20 @@ import java.util.List;
 
 @Controller
 public class HomeController {
-
-    private List<User> users;
+    private List<User> userList;
 
     public HomeController() {
-        this.users = new ArrayList<>();
+        this.userList = new ArrayList<>();
     }
 
-    // home.html - Get Request
-    @GetMapping("/users/all")               // Get -> http://localhost:8080/users/all
+    // Get Request to localhost:8080/users
+    @GetMapping("/users")
     public String showUsers(Model model) {
-        // TODO: return all users
-        User user = new User("GoshoByClass", "user@softuni.bg", "userPassword");
-        model.addAttribute("user", user);
-        model.addAttribute("email", user.getEmail());
-        model.addAttribute("password", "superPassword");
-        return "home";
+        model.addAttribute("users", userList);
+        return "users";
     }
 
-    // about.html - Get Request
+    // Get Request to localhost:8080/about
     @GetMapping("/about")
     public ModelAndView about(ModelAndView modelAndView) {
 
@@ -44,23 +39,27 @@ public class HomeController {
         return modelAndView;
     }
 
-    // write text
-    @GetMapping("/pesho")                   // Get -> http://localhost:8080/pesho
-    public @ResponseBody                    // annotation: @ResponseBody; don't search html, return text
+    // Send text to <localhost:8080/about> with annotation: @ResponseBody
+    @GetMapping("/pesho")
+    public @ResponseBody
     String showPesho() {
         return "<h3 style='text-align:left;color:Green'>Pesho</h3>";
     }
 
-//    @PostMapping("/register")
-//    public ModelAndView register(ModelAndView modelAndView) {
-//        return modelAndView;
-//    }
+    // Get Request to localhost:8080/users
+    @GetMapping("/user")
+    public Model userForm(Model model) {
+        model.addAttribute("count", "0");
+        model.addAttribute("user", new User());
 
-    // error: Whitelabel Error Page. There was an unexpected error (type=Method Not Allowed, status=405). Request method 'GET' not supported.
-    // Post Request
+        return model;
+    }
+
+    // Post Request to localhost:8080/users
     @PostMapping("/user")
-    public String createUser(User user) {
-        this.users.add(user);
-        return "redirect:/";
+    public ModelAndView register(ModelAndView modelAndView, User user) {
+        this.userList.add(user);
+        modelAndView.addObject("count", userList.size());
+        return modelAndView;
     }
 }
